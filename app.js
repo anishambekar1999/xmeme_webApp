@@ -30,6 +30,10 @@ var memeSchema=new mongoose.Schema({
 
 var Meme=mongoose.model("Meme",memeSchema);
 
+app.get("/",function(req,res){
+    res.redirect('/memes');
+});
+
 //INDEX ROUTE
 
 app.get("/memes",function(req,res){
