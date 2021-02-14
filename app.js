@@ -12,7 +12,7 @@ var expressSanitizer=require("express-sanitizer");
 app.use(expressSanitizer());
 
 var mongoose=require("mongoose");
-mongoose.connect("mongodb://localhost/xmeme",{
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/xmeme",{
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
