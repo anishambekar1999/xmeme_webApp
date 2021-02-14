@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Edit Meme - <%= meme.username %></div>
+    <form class="ui form" action="/memes/<%= meme._id %>?_method=PUT" method="POST">
+        <div class="field">
+            <label>Username</label>
+            <input type="text" name="meme[username]" value="<%= meme.username %>">
+        </div>
+        <div class="field">
+            <label>Url</label>
+            <input type="text" name="meme[meme_url]" value="<%= meme.meme_url %>">
+        </div>
+        <div class="field">
+            <label>Comment</label>
+            <textarea name="meme[comment]" cols="30" rows="3"><%= meme.comment %></textarea>
+        </div>
+        <input class="ui purple big basic button" type="submit">
+    </form>
+</div>
+
+<%- include('partials/footer') %>

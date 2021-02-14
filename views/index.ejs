@@ -1,0 +1,67 @@
+<%- include('partials/header') %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">New Meme</div>
+    <form class="ui form" action="/memes" method="POST">
+        <div class="field">
+            <label>Username</label>
+            <input type="text" name="meme[username]" placeholder="username">
+        </div>
+        <div class="field">
+            <label>Url</label>
+            <input type="text" name="meme[meme_url]" placeholder="meme url">
+        </div>
+        <div class="field">
+            <label>Comment</label>
+            <textarea name="meme[comment]" cols="30" rows="3"></textarea>
+        </div>
+        <input class="ui purple big basic button" type="submit">
+    </form>
+</div>
+
+<div class="ui main text container">
+    <div class="ui huge header">Meme Stream</div>
+    <div class="ui top attached segment">
+        <div class="ui divided items">
+            <% memes.forEach(function(meme){ %>
+                <div class="item">
+                    <div class="image">
+                        <img src="<%= meme.meme_url %>">
+                    </div>
+                    <div class="content">
+                        <h2><%= meme.username %></h2>
+                        <div class="meta">
+                            <span><%= meme.created.toDateString() %></span>
+                        </div>
+                        <div class="description">
+                            <p><%- meme.comment.substring(0,100) %>..</p>
+                        </div>
+                        <div class="extra">
+                            <a class="ui floated basic purple button" href="/memes/<%= meme._id %>">
+                                Read More
+                                <i class="right chevron icon"></i>
+                            </a>
+                        </div>
+                    </div>    
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- <% memes.forEach(function(meme){ %>
+    <div>
+        <h2><%= meme.username %></h2>
+        <img src="<%= meme.meme_url %>">
+        <span><%= meme.created %></span>
+        <p><%= meme.comment.substring(0,100) %>..</p>
+        <a class="ui purple basic button" href="/blogs/<%= meme._id %>">Read More</a>
+    </div>
+<% }); %> -->
+
+<%- include('partials/footer') %>
